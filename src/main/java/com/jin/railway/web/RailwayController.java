@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping({ "/railway" })
 public class RailwayController {
 
+	private String mailTo = "xxxxxxx@qq.com";
+
 	@Autowired
 	private MailService mailService;
 
@@ -26,7 +28,7 @@ public class RailwayController {
 		sb.append(" ———— ");
 		sb.append("到达：").append(to == null ? "" : to);
 		sb.append("\n");
-		mailService.sendHtmlMail("订票成功了，该付款了！！", "328561514@qq.com", sb.toString());
+		mailService.sendHtmlMail("订票成功了，该付款了！！", mailTo, sb.toString());
 
 		return "success";
 	}
